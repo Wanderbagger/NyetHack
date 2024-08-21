@@ -84,16 +84,29 @@ private fun placeOrder(patronName: String, menuData: String){
 private fun printMenu(){
     val firstLine = "*** Welcome to Taernyl's Folly ***"
     println(firstLine)
-    println(firstLine.length)
+    println()
 
     for(menuItem in menuList){
-        val (type, name, price) = menuItem.split(',')
+        for(word in menuItem.split(' ')){
+            if(!word.equals("of") || !word.equals("la")){
+
+            }
+        }
+        var (type, name, price) = menuItem.split(',')
+        var words = name.split(' ')
+        name = ""
+        for(word in words){
+            if(!word.equals("of")){
+                name += ( word.capitalize() + ' ')
+            } else {
+                name += (word + ' ')
+            }
+        }
         var dots = "."
         while (firstLine.length > (name.length + price.length + dots.length)){
-            dots +=  dots
+            dots +=  "."
         }
-        println( firstLine.length)
-        println(name.length + price.length + dots.length)
+    println("~[ $type ]~")
     println(name + dots + price)
     }
 
