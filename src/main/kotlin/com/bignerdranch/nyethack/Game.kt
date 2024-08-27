@@ -1,10 +1,10 @@
-import kotlin.random.Random
+package com.bignerdranch.nyethack
 
 class Game {
 }
 
 fun main(args: Array<String>) {
-   val player = Player()
+    val player = Player("Madrigal", 89, true, false)
     player.castFireball()
     val auraColor = player.auraColor()
     printPlayerStatus(player, auraColor)

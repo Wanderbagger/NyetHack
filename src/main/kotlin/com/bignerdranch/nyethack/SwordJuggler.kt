@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 class SwordJuggler {
 }
 fun main(args: Array<String>) {
