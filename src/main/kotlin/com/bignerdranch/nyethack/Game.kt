@@ -4,7 +4,7 @@ class Game {
 }
 
 fun main(args: Array<String>) {
-    val player = Player("Madrigal", 89, true, false)
+    val player = Player("Madrigal")
     player.castFireball()
     val auraColor = player.auraColor()
     printPlayerStatus(player, auraColor)
