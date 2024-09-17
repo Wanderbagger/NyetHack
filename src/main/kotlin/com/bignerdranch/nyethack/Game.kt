@@ -61,6 +61,7 @@ object Game {
             "exit" -> exitGame();
             "ring" -> bellRing();
             "map" -> printMap();
+            "fight" -> fight();
             else -> commandNotFound()
         }
         private fun commandNotFound() = "I'm not quite sure what you're trying to do!"
@@ -87,6 +88,27 @@ object Game {
                 }
             }
             print("\n")
+        }
+    }
+
+    private fun fight() = currentRoom.monster?.let {
+        while (player.healthPoints > 0 && it.healthPoints > 0) {
+            slay(it)
+            Thread.sleep(1000)
+        }
+        "Combat complete."
+    } ?: "There's nothing here to fight."
+
+    private fun slay(monster: Monster) {
+        println("${monster.name} did ${monster.attack(player)} damage!")
+        println("${player.name} did ${player.attack(monster)} damage!")
+        if (player.healthPoints <= 0) {
+            println(">>>> You have been defeated! Thanks for playing. <<<<")
+            exitProcess(0)
+        }
+        if (monster.healthPoints <= 0) {
+            println(">>>> ${monster.name} has been defeated! <<<<")
+            currentRoom.monster = null
         }
     }
 }
