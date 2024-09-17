@@ -10,8 +10,8 @@ object Game {
     val player = Player("Madrigal")
     private var currentRoom: Room = TownSquare()
     private var worldMap = listOf(
-        listOf(currentRoom, Room("Tavern"), Room("Back Room"),
-        Room("Long Corridor"), Room("Generic Room")))
+        listOf(currentRoom, Room("Tavern"), Room("Back Room")),
+            listOf(Room("Long Corridor"), Room("Generic Room")))
     init {
         println("Welcome, adventurer.")
         player.castFireball()
@@ -59,7 +59,8 @@ object Game {
             "move" -> move(argument);
             "quit" -> exitGame();
             "exit" -> exitGame();
-            "ring" -> bellRing()
+            "ring" -> bellRing();
+            "map" -> printMap();
             else -> commandNotFound()
         }
         private fun commandNotFound() = "I'm not quite sure what you're trying to do!"
@@ -73,6 +74,19 @@ object Game {
             (currentRoom as TownSquare).ringBell()
         } else {
             println("You are not at the Town Square, friend!")
+        }
+    }
+
+    private fun printMap() {
+        for (listMap in worldMap) {
+            for (room in listMap) {
+                if (room == currentRoom) {
+                    print("X ")
+                } else {
+                    print("O ")
+                }
+            }
+            print("\n")
         }
     }
 }

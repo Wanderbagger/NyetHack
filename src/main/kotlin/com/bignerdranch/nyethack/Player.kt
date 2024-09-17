@@ -6,7 +6,7 @@ import java.util.*
 class Player(_name: String,
              var healthPoints: Int = 100,
              val isBlessed: Boolean,
-             val isImmortal: Boolean) {
+             val isImmortal: Boolean): Fightable {
    var name = _name
             get() = "${field.capitalize()} of $hometown"
         private set(value) {
@@ -52,4 +52,14 @@ constructor(name: String) : this(name,
     fun castFireball(numFireballs: Int = 2) =
         println("A glass of Fireball springs into existence. (x$numFireballs)")
 
+    override var diceCount: Int
+        get() = TODO("Not yet implemented")
+        set(value) {}
+    override var diceSides: Int
+        get() = TODO("Not yet implemented")
+        set(value) {}
+
+    override fun attack(opponent: Fightable): Int {
+        TODO("Not yet implemented")
+    }
 }
