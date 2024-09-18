@@ -87,7 +87,7 @@ object Game {
                     print("O ")
                 }
             }
-            print("\n")
+            print("\n") // разделитель строки
         }
     }
 
