@@ -43,8 +43,8 @@ fun performPurchase(price : Double, patronName: String) {
     val totalPurse = patronGold.getValue(patronName)
     patronGold[patronName] = totalPurse - price
 }
-private fun toDragonSpeak(phrase: String) =
-    phrase.replace(Regex("[aeiouAEIOU]")) {
+private fun String.toDragonSpeak() =
+    this.replace(Regex("[aeiouAEIOU]")) {
         when (it.value){
             "a", "A" -> "4"
             "e", "E" -> "3"
@@ -67,7 +67,7 @@ private fun placeOrder(patronName: String, menuData: String){
         println(message)
         performPurchase(price.toDouble(), patronName)
         val phrase = if (name == "Dragon's Breath") {
-            "Madrigal exclaims ${toDragonSpeak("Ah, delicious $name")}!"
+            "$patronName exclaims ${("Ah, delicious $name".toDragonSpeak())}!"
         } else {
             "$patronName says: Thanks for the $name"
         }
