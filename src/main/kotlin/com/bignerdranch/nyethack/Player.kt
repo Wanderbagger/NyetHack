@@ -1,7 +1,6 @@
 package com.bignerdranch.nyethack
 import java.io.File
-
-import java.util.*
+import com.bignerdranch.nyethack.extensions.randomizer
 
 class Player(_name: String,
              override var healthPoints: Int = 100,
@@ -42,9 +41,7 @@ constructor(name: String) : this(name,
     private fun selectHometown() = File("data/towns.txt")
         .readText()
         .split("\n")
-        .shuffled()
-        .first()
-
+        .randomizer()
 
     fun auraColor(): String {
         val auraVisible = isBlessed && healthPoints > 50 || isImmortal
